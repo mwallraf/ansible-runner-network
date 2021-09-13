@@ -1,0 +1,23 @@
+- name: "Ansible demo project - get running config from lab router"
+
+  gather_facts: no
+
+  hosts: all
+
+  tasks:
+  
+  - name: Show running config
+    ansible.netcommon.cli_command:
+      command: "{{ item }}"
+    loop:
+      - "show running-config"
+    vars:
+      ansible_command_timeout: "{{ timeout_wait_for_command }}"
+    register: output
+
+  - debug:
+      var: ansible_facts
+  
+  - debug: 
+      var: output.results[0].stdout_lines
+

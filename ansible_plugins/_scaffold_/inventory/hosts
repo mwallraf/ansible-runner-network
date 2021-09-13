@@ -1,0 +1,5 @@
+[local_lab_oneos5]
+dops-lab-02 ansible_host=10.0.96.67
+
+[local_lab_oneos5:vars]
+ansible_network_os=oneos5

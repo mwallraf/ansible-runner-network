@@ -1,0 +1,20 @@
+---
+ansible_connection: ansible.netcommon.network_cli
+host_key_checking: False
+#ansible_paramiko_host_key_checking = False
+#paramiko_host_key_checking = False
+## network connection parameters:
+ansible_become: no
+ansible_become_method: enable
+timeout_wait_for_command: 300
+timeout_wait_for_install: 300
+timeout_wait_for_copy: 900
+timeout_wait_for_reboot: 600
+ansible_user: autoscript
+ansible_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          62613166653035666131313835386433363463373536343336386337343363326461653732323563
+          6562353062623335373735353435633366366161613137330a646139636136626164616162393136
+          31623231343935333166633439383230333261313735386266303761633765653633343232356332
+          3464363237376438660a393364663234303562353830616562303634653438343464623335323337
+          3132

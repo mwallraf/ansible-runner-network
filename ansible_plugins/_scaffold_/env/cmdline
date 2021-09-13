@@ -1,0 +1,1 @@
+--vault-id ~/.ansible/plugins/vault/.vault -i ../inventory/hosts
