@@ -6,7 +6,7 @@ The image has specific python and ansible galaxy requirements so that it can run
 
 ## ABOUT
 
-This package allows users to run ansible projects in an isolated Docker container. A scaffolding structure is created for each new project and users should only update the ``ìnventory``` file and make the ansible ```playbook```. Then they will be able to run it without having to worry about additional environment variables or other parameters.
+This package allows users to run ansible projects in an isolated Docker container. A scaffolding structure is created for each new project and users should only update the ```ìnventory``` file and make the ansible ```playbook```. Then they will be able to run it without having to worry about additional environment variables or other parameters.
 
 ## INSTALLATION
 
@@ -41,9 +41,10 @@ make init
 
 Follow these instructions to create a new ansible project and to run it.
 
-    > To use this package you will need to have permissions to run Docker commands, either via ```sudo``` or being a member of the linux ```docker``` group.
+    > To use this package you will need to have permissions to run Docker commands
+    > either via ```sudo``` or being a member of the linux ```docker``` group.
 
-In order to create a new project and run it you will have to execute the commands below:
+In order to create a new project and run it you will have to execute the commands below (assuming your project name is "show_running_config"):
 
 ```
 ansible-run -c show_running_config
@@ -61,11 +62,20 @@ ansible-run show_running_config oneaccess
 
 This is a wrapper script around Makefile that should be used to create and run ansible projects.
 
-The ```ansible-run``` command is created while initializing the package and has the following parameters:
+The ```ansible-run``` command is created while initializing the package and can be used like this:
 
-    **create <project>** : Create a new project folder called <project>
 
-    **run <project> [<playbook>] : Run the playboook of a project
+**Create a new project:**
+
+    > ansible-run -c new_project
+
+**Run a project:**
+
+    > ansible-run new_project
+
+**Run a specific playbook within a project:**
+
+    > ansible-run new_project my_playbook
 
 
 
@@ -84,16 +94,16 @@ ansible-run create <your project name>
 The structure of your project folder will look like below, the only files you will normally have to update are the ```inventory > hosts``` and ```project > playbook.yml``` files.
 
 ```
-    -- env
-        |-- cmdline
-        |-- envvars
-        |-- extravars
-        |-- passwords
-        |-- settings
-        |-- ssh_key
-    -- inventory
-        |-- hosts
-    -- project
+   -|-- env
+    |    |-- cmdline
+    |    |-- envvars
+    |    |-- extravars
+    |    |-- passwords
+    |    |-- settings
+    |    |-- ssh_key
+    |-- inventory
+    |    |-- hosts
+    |-- project
         |-- roles
         |-- playbook.yml
 ```
